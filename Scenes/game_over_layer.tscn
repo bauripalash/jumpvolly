@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=3 uid="uid://dd5i5w6fov0ag"]
+
+[ext_resource type="Script" path="res://Scenes/game_over_ui.gd" id="1_73t6g"]
+[ext_resource type="Texture2D" uid="uid://b0tut5fgquig" path="res://Artworks/HUD/game_over_bg.png" id="1_fsnvn"]
+[ext_resource type="Texture2D" uid="uid://dw0e5ectsxsoe" path="res://Artworks/HUD/restart.png" id="1_yjjqc"]
+[ext_resource type="FontFile" uid="uid://c51wwnysc63o7" path="res://Artworks/Fonts/GeneraleStation-Regular.otf" id="3_rd6sb"]
+[ext_resource type="Texture2D" uid="uid://cthgwrl7squcl" path="res://Artworks/HUD/menu.png" id="4_5plr4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_43ru3"]
+font = ExtResource("3_rd6sb")
+font_size = 52
+font_color = Color(1, 1, 0.352941, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_aiaxo"]
+font = ExtResource("3_rd6sb")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_5dkcc"]
+font = ExtResource("3_rd6sb")
+font_size = 40
+
+[node name="GameOver_Layout" type="CanvasLayer"]
+follow_viewport_enabled = true
+script = ExtResource("1_73t6g")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -356.0
+offset_top = -360.0
+offset_right = 359.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.709804, 0.560784, 0.45098, 0.756863)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(541.5, 356.023)
+scale = Vector2(1.48958, 1.48343)
+texture = ExtResource("1_fsnvn")
+
+[node name="Game_Over_Container" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = -195.0
+offset_right = 272.0
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Game_Over_Label" type="Label" parent="Game_Over_Container"]
+layout_mode = 2
+text = "Oops! Game Over!!"
+label_settings = SubResource("LabelSettings_43ru3")
+horizontal_alignment = 1
+
+[node name="Your_Score" type="Label" parent="Game_Over_Container"]
+layout_mode = 2
+text = "You Scored: "
+label_settings = SubResource("LabelSettings_aiaxo")
+horizontal_alignment = 1
+
+[node name="High_Score" type="Label" parent="Game_Over_Container"]
+layout_mode = 2
+text = "High Score: "
+label_settings = SubResource("LabelSettings_5dkcc")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Game_Over_Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game_Over_Container/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Restart_Button" type="TextureButton" parent="Game_Over_Container/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_yjjqc")
+
+[node name="Menu_Button" type="TextureButton" parent="Game_Over_Container/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("4_5plr4")
+
+[connection signal="button_down" from="Game_Over_Container/MarginContainer/HBoxContainer/Restart_Button" to="." method="_on_restart_button_button_down"]
+[connection signal="button_down" from="Game_Over_Container/MarginContainer/HBoxContainer/Menu_Button" to="." method="_on_menu_button_button_down"]

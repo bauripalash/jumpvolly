@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://du4o5eqhl2lbn"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_632n7"]
+[ext_resource type="Texture2D" uid="uid://ullh2ynm0bs7" path="res://Artworks/platformerPack_character.png" id="2_vufjf"]
+[ext_resource type="AudioStream" uid="uid://ivvaimoetvl7" path="res://Artworks/Sounds/ball_player.ogg" id="3_vu41x"]
+[ext_resource type="AudioStream" uid="uid://bhkwy27whkhwo" path="res://Artworks/Sounds/footstep.ogg" id="4_1sttc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1sk40"]
+radius = 27.5
+height = 68.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hgq3"]
+atlas = ExtResource("2_vufjf")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7bok"]
+atlas = ExtResource("2_vufjf")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpd70"]
+atlas = ExtResource("2_vufjf")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r3cio"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hgq3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7bok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpd70")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(52, 57)
+floor_constant_speed = true
+platform_floor_layers = 4294967041
+script = ExtResource("1_632n7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 600
+position = Vector2(-0.5, 15)
+shape = SubResource("CapsuleShape2D_1sk40")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r3cio")
+animation = &"idle"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="SFX_Ball_Player" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_vu41x")
+
+[node name="SFX_Walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1sttc")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://mcnoqy45u1b2"]
+
+[ext_resource type="Script" path="res://Scripts/ball.gd" id="1_g4o4u"]
+[ext_resource type="Texture2D" uid="uid://dayqmlvwfud2j" path="res://Artworks/SoccerBall.png" id="2_wk083"]
+[ext_resource type="AudioStream" uid="uid://h3srttqibs54" path="res://Artworks/Sounds/ball_ground.ogg" id="3_750st"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fvx44"]
+friction = 0.05
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_brmc5"]
+radius = 28.0179
+
+[node name="Ball" type="RigidBody2D"]
+mass = 0.6
+physics_material_override = SubResource("PhysicsMaterial_fvx44")
+gravity_scale = 0.5
+can_sleep = false
+freeze_mode = 1
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_g4o4u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 200
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_wk083")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 300
+rotation = -1.68737
+shape = SubResource("CircleShape2D_brmc5")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="SFX_Ball_Ground" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_750st")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

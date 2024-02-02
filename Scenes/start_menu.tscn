@@ -1,0 +1,122 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfuicevmcynv8"]
+
+[ext_resource type="Script" path="res://Scripts/start_menu.gd" id="1_gdwp3"]
+[ext_resource type="Texture2D" uid="uid://cujtp302kb26p" path="res://Artworks/bg.png" id="2_bkqxu"]
+[ext_resource type="FontFile" uid="uid://c51wwnysc63o7" path="res://Artworks/Fonts/GeneraleStation-Regular.otf" id="3_doetv"]
+[ext_resource type="Texture2D" uid="uid://npx1qs4umlof" path="res://Artworks/HUD/start.png" id="3_xv4s4"]
+[ext_resource type="Texture2D" uid="uid://52ccvxvt2mo2" path="res://Artworks/HUD/exit.png" id="4_fx13l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p3r00"]
+font = ExtResource("3_doetv")
+font_size = 100
+outline_size = 40
+outline_color = Color(0.027451, 0.627451, 0.278431, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m8v0v"]
+font = ExtResource("3_doetv")
+font_size = 34
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gdwp3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.360784, 0.360784, 0.360784, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -882.0
+offset_top = -761.0
+offset_right = 792.0
+offset_bottom = 893.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bkqxu")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.5
+offset_top = -126.5
+offset_right = 213.5
+offset_bottom = 126.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "JUMP VOLLY"
+label_settings = SubResource("LabelSettings_p3r00")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "by Palash Bauri"
+label_settings = SubResource("LabelSettings_m8v0v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Start_Button" type="TextureButton" parent="VBoxContainer2/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_xv4s4")
+
+[node name="Exit_Button" type="TextureButton" parent="VBoxContainer2/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_fx13l")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="About_Button" type="Button" parent="VBoxContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_doetv")
+theme_override_font_sizes/font_size = 22
+text = "[About]"
+flat = true
+
+[node name="Website_Button" type="Button" parent="VBoxContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_doetv")
+theme_override_font_sizes/font_size = 22
+text = "[Website]
+"
+flat = true
+
+[connection signal="button_down" from="VBoxContainer2/VBoxContainer/MarginContainer/HBoxContainer/Start_Button" to="." method="_on_start_button_button_down"]
+[connection signal="button_down" from="VBoxContainer2/VBoxContainer/MarginContainer/HBoxContainer/Exit_Button" to="." method="_on_exit_button_button_down"]
+[connection signal="button_down" from="VBoxContainer2/MarginContainer/HBoxContainer/About_Button" to="." method="_on_about_button_button_down"]
+[connection signal="button_down" from="VBoxContainer2/MarginContainer/HBoxContainer/Website_Button" to="." method="_on_website_button_button_down"]
