@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 signal ball_hit
 
-
 var screen_size
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -450.0
@@ -34,7 +33,7 @@ func start(pos):
 	$CollisionShape2D.disabled = false
 	
 func _process(delta):
-	if velocity.x != 0 and is_walk_button_pressed():
+	if velocity.x != 0:
 		$AnimatedSprite2D.speed_scale = 1
 		$AnimatedSprite2D.animation = "walk"
 		$AnimatedSprite2D.flip_v = false
@@ -43,21 +42,9 @@ func _process(delta):
 		$AnimatedSprite2D.speed_scale = 0.4
 		$AnimatedSprite2D.animation = "idle"
 
-func is_walk_button_pressed():
-	return (Input.is_action_pressed("move_left") 
-		or Input.is_action_pressed("move_right") 
-			or Input.is_action_pressed("touch_left") 
-				or Input.is_action_pressed("touch_right"))
-
-func is_walk_button_released(event):
-	
-	return (event.is_action_released("move_left") 
-		or event.is_action_released("move_right") 
-			or event.is_action_released("touch_left") 
-				or event.is_action_released("touch_right"))
 		
 func should_jump(event):
-	if is_walk_button_released(event) and is_on_floor():
+	if can_jump and is_on_floor():
 		return true
 	else:
 		return false
@@ -65,14 +52,11 @@ func should_jump(event):
 func _input(event):
 	if event.is_action_pressed("move_left")or event.is_action_pressed("ui_left"):
 		PlayerState = PState.WalkLeft
-		can_jump = false
 	elif event.is_action_pressed("move_right") or event.is_action_pressed("ui_right"):
 		PlayerState = PState.WalkRight
-		can_jump = false
 	elif (event.is_action_released("move_left") or event.is_action_released("move_right") or 
 			event.is_action_released("ui_left") or event.is_action_released("ui_right")):
-		if is_on_floor():
-			can_jump = true
+		can_jump = true
 		PlayerState = PState.Idle
 
 func _physics_process(delta):
@@ -110,7 +94,9 @@ func _physics_process(delta):
 			emit_ball_hit()
 	
 func play_ball_player_sfx():
-	$SFX_Ball_Player.play()
+	if Globals.sound_enabled:
+		$SFX_Ball_Player.play()
+	
 
 func emit_ball_hit():
 	if $Timer.is_stopped():

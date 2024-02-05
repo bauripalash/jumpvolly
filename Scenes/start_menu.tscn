@@ -101,6 +101,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="Sound_Button" type="CheckBox" parent="VBoxContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_doetv")
+theme_override_font_sizes/font_size = 22
+text = "[Enable Sound]"
+flat = true
+
 [node name="About_Button" type="Button" parent="VBoxContainer2/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_doetv")
@@ -118,5 +125,6 @@ flat = true
 
 [connection signal="button_down" from="VBoxContainer2/VBoxContainer/MarginContainer/HBoxContainer/Start_Button" to="." method="_on_start_button_button_down"]
 [connection signal="button_down" from="VBoxContainer2/VBoxContainer/MarginContainer/HBoxContainer/Exit_Button" to="." method="_on_exit_button_button_down"]
+[connection signal="toggled" from="VBoxContainer2/MarginContainer/HBoxContainer/Sound_Button" to="." method="_on_sound_button_toggled"]
 [connection signal="button_down" from="VBoxContainer2/MarginContainer/HBoxContainer/About_Button" to="." method="_on_about_button_button_down"]
 [connection signal="button_down" from="VBoxContainer2/MarginContainer/HBoxContainer/Website_Button" to="." method="_on_website_button_button_down"]

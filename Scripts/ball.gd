@@ -21,9 +21,11 @@ func _on_body_entered(body):
 
 func ball_ground_contact():
 	if $Timer.is_stopped():
-		$SFX_Ball_Ground.play()
 		hit_ground.emit()
 		$Timer.start()
+		if Globals.sound_enabled:
+			$SFX_Ball_Ground.play()
+		
 
 func _on_timer_timeout():
 	$Timer.stop()

@@ -1,0 +1,19 @@
+[b]Hello, folks![/b]
+
+[img=center,center]res://Artworks/palash_potrait.png[/img]
+
+I am [b]Palash Bauri[/b], I am the developer of this game. This is the very first game I have developed. The game is open source licenesed under GNU GPL v3, the source code of the game is avaible on [url=https://github.com/bauripalash/jumpvolly]github[/url]
+
+[u][b]How to Play[/b][/u]
+Your goal in this game is to hit the ball with the character as many times as possible, gaining points and preventing the ball from touching the ground, loosing health. You have total 10 health, with this score as much as possible and create high scores.
+
+[u][b]Controls[/b][/u]
+
+[*] Computer/Web: pressing the [u][i]Left Arrow key[/i][/u] and [u][i]A[/i][/u] will move the character to left and pressing the [u][i]Right Arrow key[/i][/u] and [u][i]D[/i][/u] will move the character to right. As soon as you release those keys, the character will jump.
+[*] Mobile: Tapping left side of the screen moves the character to the left; tapping the righting side moves the character to the right. Releasing them make the character jump.
+
+Have fun!
+
+[u][b]Credits:[/b][/u]
+Most game assets are from Kenney’s assets ([url=https://www.kenney.nl]kenney.nl[/url]) such as the character, the background, the floor platform, the volleyball is from openclipart.org.
+The font used is Générale Station, licensed under [url=https://openfontlicense.org/open-font-license-official-text/]SIL Open Font License (OFL) version 1.1[/url].

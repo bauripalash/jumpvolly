@@ -17,6 +17,10 @@ boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/image="res://Artworks/author_splash_image.png"
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://Scripts/globals.gd"
+
 [display]
 
 window/size/viewport_width=1080

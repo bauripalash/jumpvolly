@@ -3,7 +3,8 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var sound_button : CheckBox = get_node("VBoxContainer2/MarginContainer/HBoxContainer/Sound_Button") 
+	sound_button.button_pressed = Globals.sound_enabled
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,3 +33,7 @@ func _on_about_button_button_down():
 
 func _on_website_button_button_down():
 	OS.shell_open("https://palashbauri.in/") 
+
+
+func _on_sound_button_toggled(toggled_on):
+	Globals.save_sound_settings(toggled_on)

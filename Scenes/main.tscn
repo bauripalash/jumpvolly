@@ -3,14 +3,14 @@
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_8wj7i"]
 [ext_resource type="Texture2D" uid="uid://dnvioo8x6ucif" path="res://Artworks/tiles.svg" id="2_5p0t0"]
 [ext_resource type="PackedScene" uid="uid://du4o5eqhl2lbn" path="res://Scenes/player.tscn" id="3_41ri0"]
-[ext_resource type="Texture2D" uid="uid://kxmin8c8a0jn" path="res://Artworks/HUD/replay.png" id="3_808mm"]
+[ext_resource type="Texture2D" uid="uid://ubmc2cjl4fdx" path="res://Artworks/HUD/hammenu.png" id="3_jm607"]
 [ext_resource type="Texture2D" uid="uid://cujtp302kb26p" path="res://Artworks/bg.png" id="3_ytdvf"]
-[ext_resource type="Texture2D" uid="uid://m1111cnjrcmd" path="res://Artworks/HUD/arrowLeft.png" id="4_2dlp7"]
-[ext_resource type="Texture2D" uid="uid://cje4f82p8aaug" path="res://Artworks/HUD/arrowRight.png" id="5_ritmr"]
 [ext_resource type="PackedScene" uid="uid://mcnoqy45u1b2" path="res://Scenes/ball.tscn" id="6_g3naj"]
 [ext_resource type="Script" path="res://Scripts/healthview.gd" id="10_6i3d8"]
 [ext_resource type="FontFile" uid="uid://c51wwnysc63o7" path="res://Artworks/Fonts/GeneraleStation-Regular.otf" id="10_chf4s"]
 [ext_resource type="PackedScene" uid="uid://dd5i5w6fov0ag" path="res://Scenes/game_over_layer.tscn" id="11_etfyp"]
+[ext_resource type="PackedScene" uid="uid://c7hqrgrfuvsrk" path="res://Scenes/in_game_menu.tscn" id="12_jurt7"]
+[ext_resource type="Texture2D" uid="uid://borimbqnx8p34" path="res://Artworks/HUD/heart_full.png" id="13_mjpwm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_34rca"]
 texture = ExtResource("2_5p0t0")
@@ -43,13 +43,13 @@ use_texture_padding = false
 sources/0 = SubResource("TileSetAtlasSource_34rca")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcjve"]
-size = Vector2(2664, 206)
+size = Vector2(2664, 213)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vquh"]
-size = Vector2(539, 1000)
+size = Vector2(1070, 1000)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ehcg5"]
-size = Vector2(539, 1000)
+size = Vector2(1070, 1000)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fbmbx"]
 size = Vector2(59, 852)
@@ -70,24 +70,29 @@ shadow_size = 2
 script = ExtResource("1_8wj7i")
 
 [node name="GameOver_Layout" parent="." instance=ExtResource("11_etfyp")]
+process_mode = 2
 visible = false
+
+[node name="InGameMenu" parent="." instance=ExtResource("12_jurt7")]
+process_mode = 2
+process_priority = 100
+visible = false
+follow_viewport_enabled = true
 
 [node name="Game" type="Node" parent="."]
 
-[node name="Retry_Button_Control" type="Control" parent="Game"]
-z_as_relative = false
+[node name="Menu_Control" type="Control" parent="Game"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_group_ = true
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="Game/Retry_Button_Control"]
-z_index = 501
-position = Vector2(17, 13)
-scale = Vector2(0.2, 0.2)
-texture_normal = ExtResource("3_808mm")
-action = "retry_click"
+[node name="InGameMenuButton" type="TextureButton" parent="Game/Menu_Control"]
+layout_mode = 0
+scale = Vector2(0.6, 0.6)
+theme_type_variation = &"FlatButton"
+texture_normal = ExtResource("3_jm607")
 
 [node name="Player" parent="Game" instance=ExtResource("3_41ri0")]
 z_index = 2
@@ -102,55 +107,56 @@ layer_0/tile_data = PackedInt32Array(2555906, 0, 0, 2555910, 0, 0, 2555914, 0, 0
 [node name="Background" type="Node" parent="Game"]
 
 [node name="Bg" type="Sprite2D" parent="Game/Background"]
-position = Vector2(216, 431)
+z_index = -1
+position = Vector2(234, 451)
 texture = ExtResource("3_ytdvf")
 
 [node name="Bg2" type="Sprite2D" parent="Game/Background"]
-position = Vector2(1239, 431)
+position = Vector2(1239, 454)
 texture = ExtResource("3_ytdvf")
 
 [node name="Soil" type="StaticBody2D" parent="Game"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Soil"]
-position = Vector2(704, 710)
+position = Vector2(704, 706.5)
 shape = SubResource("RectangleShape2D_dcjve")
 debug_color = Color(0.854902, 0.270588, 0.639216, 0.419608)
 
-[node name="Touch_Controls" type="Node" parent="Game"]
+[node name="Touch_Controls" type="Control" parent="Game"]
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Control_Touch_Left" type="Control" parent="Game/Touch_Controls"]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 40.0
-offset_bottom = -680.0
 grow_vertical = 2
 
 [node name="Touch_Left" type="TouchScreenButton" parent="Game/Touch_Controls/Control_Touch_Left"]
 z_index = 510
-position = Vector2(0, 539)
-scale = Vector2(1.38, 1.38)
-texture_normal = ExtResource("4_2dlp7")
 shape = SubResource("RectangleShape2D_7vquh")
+shape_visible = false
 action = "move_left"
 visibility_mode = 1
 
 [node name="Control_Touch_Right" type="Control" parent="Game/Touch_Controls"]
-layout_mode = 3
+layout_mode = 1
+anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 0.865
-offset_left = -1080.0
-offset_right = -1040.0
-offset_bottom = -582.8
-grow_horizontal = 2
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
 
 [node name="Touch_Right" type="TouchScreenButton" parent="Game/Touch_Controls/Control_Touch_Right"]
 z_index = 510
-position = Vector2(932, 536)
-scale = Vector2(1.57, 1.57)
-texture_normal = ExtResource("5_ritmr")
 shape = SubResource("RectangleShape2D_ehcg5")
+shape_visible = false
 action = "move_right"
 visibility_mode = 1
 
@@ -211,68 +217,77 @@ shape = SubResource("RectangleShape2D_s8m80")
 
 [node name="Score_Control" type="Control" parent="Game/HUD"]
 layout_mode = 3
-anchors_preset = 11
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1080.0
-offset_right = -1040.0
-offset_bottom = -680.0
+offset_left = -116.0
+offset_top = 7.0
+offset_bottom = 62.0
 grow_horizontal = 0
-grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="Score_Label" type="Label" parent="Game/HUD/Score_Control"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 26.896
-anchor_right = 26.896
-anchor_bottom = 18.305
-offset_left = -127.84
-offset_top = 12.0
-offset_right = -39.8401
-offset_bottom = -672.2
+offset_right = 88.0
+offset_bottom = 37.0
 text = "0000"
 label_settings = SubResource("LabelSettings_4wluw")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Health_Control" type="Control" parent="Game/HUD"]
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="Game/HUD/Health_Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
+offset_left = -140.0
+offset_right = 376.0
+offset_bottom = 55.0
 grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
 theme_override_constants/margin_top = 10
 
 [node name="Health_Container" type="HBoxContainer" parent="Game/HUD/Health_Control/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 alignment = 1
 script = ExtResource("10_6i3d8")
 
 [node name="1" type="TextureRect" parent="Game/HUD/Health_Control/MarginContainer/Health_Container"]
 layout_mode = 2
+texture = ExtResource("13_mjpwm")
 
 [node name="2" type="TextureRect" parent="Game/HUD/Health_Control/MarginContainer/Health_Container"]
 layout_mode = 2
+texture = ExtResource("13_mjpwm")
 
 [node name="3" type="TextureRect" parent="Game/HUD/Health_Control/MarginContainer/Health_Container"]
 layout_mode = 2
+texture = ExtResource("13_mjpwm")
 
 [node name="4" type="TextureRect" parent="Game/HUD/Health_Control/MarginContainer/Health_Container"]
 layout_mode = 2
+texture = ExtResource("13_mjpwm")
 
 [node name="5" type="TextureRect" parent="Game/HUD/Health_Control/MarginContainer/Health_Container"]
 layout_mode = 2
+texture = ExtResource("13_mjpwm")
 
 [connection signal="go_menu_click" from="GameOver_Layout" to="." method="_on_game_over_layout_go_menu_click"]
 [connection signal="restart_click" from="GameOver_Layout" to="." method="_on_game_over_layout_restart_click"]
+[connection signal="ig_mainmenu_click" from="InGameMenu" to="." method="_on_in_game_menu_ig_mainmenu_click"]
+[connection signal="ig_retry_click" from="InGameMenu" to="." method="_on_in_game_menu_ig_retry_click"]
+[connection signal="ig_return_click" from="InGameMenu" to="." method="_on_in_game_menu_ig_return_click"]
+[connection signal="pressed" from="Game/Menu_Control/InGameMenuButton" to="." method="_on_in_game_menu_button_pressed"]
 [connection signal="ball_hit" from="Game/Player" to="." method="_on_player_ball_hit"]
 [connection signal="hit_ground" from="Game/Ball" to="." method="_on_ball_hit_ground"]

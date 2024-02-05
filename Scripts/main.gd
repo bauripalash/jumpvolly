@@ -1,34 +1,24 @@
 extends Node2D
 
-const HIGH_SCORE_FILE = "user://score_data.save"
+
 
 var score = 0
-var health = 10
-var high_score = 0
+@export var health = 1
 
 var h_full = preload("res://Artworks/HUD/heart_full.png")
 var h_half = preload("res://Artworks/HUD/heart_half.png")
 var h_empty = preload("res://Artworks/HUD/heart_empty.png")
-
-func load_high_score():
-	if not FileAccess.file_exists(HIGH_SCORE_FILE):
-		return
-	var f = FileAccess.open(HIGH_SCORE_FILE , FileAccess.READ)
-	var raw_hs = f.get_line()
-	if !raw_hs.is_empty():
-		high_score = int(raw_hs)
-	else:
-		return
-		
-func save_high_score():
-	var f = FileAccess.open(HIGH_SCORE_FILE , FileAccess.WRITE)
-	f.store_line(str(high_score))
+var back_menu_icon = preload("res://Artworks/HUD/back_menu_btn.png")
+var retry_menu_icon = preload("res://Artworks/HUD/retry_menu_btn.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$GameOver_Layout.hide()
-	load_high_score()
+	#load_high_score()
 	update_health(health)
+	
+
+	
 
 func update_health(value):
 	var hcon = get_node("Game/HUD/Health_Control/MarginContainer/Health_Container")
@@ -56,21 +46,22 @@ func handle_game_over():
 	#$Game/Player/CollisionShape2D.disabled = true 
 	#$Game/Ball/CollisionShape2D.disabled = true
 	#get_node("Game").process_mode = Node.PROCESS_MODE_DISABLED
-	get_node("Game/HUD/Score_Control").visible = false
-	get_node("Game/HUD/Health_Control").visible = false
-	get_node("Game/Retry_Button_Control").visible = false
-	get_node("Game").set_deferred("proce_mode" , Node.PROCESS_MODE_DISABLED)
+	#get_node("Game/HUD/Score_Control").visible = false
+	#get_node("Game/HUD/Health_Control").visible = false
+	#get_node("Game/Retry_Button_Control").visible = false
+	#get_node("Game").set_deferred("process_mode" , Node.PROCESS_MODE_DISABLED)
 	
-	if score > high_score:
-		high_score = score
-		save_high_score()
+	if score > Globals.high_score:
+		Globals.save_high_score(score)
 		
 	
 	var ys_label = ("Your Score : %02d" % score)
 	get_node("GameOver_Layout/Game_Over_Container/Your_Score").set_text(ys_label)
-	var hs_label = ("High Score : %02d" % high_score)
+	var hs_label = ("High Score : %02d" % Globals.high_score)
 	get_node("GameOver_Layout/Game_Over_Container/High_Score").set_text(hs_label)
 	$GameOver_Layout.show()
+	get_tree().paused = true
+	hide()
 
 func _on_ball_hit_ground():
 	if health != 0:
@@ -83,11 +74,41 @@ func _on_ball_hit_ground():
 		
 
 
-func _on_game_over_layout_restart_click():
-	get_tree().reload_current_scene()
-
-
-
-
 func _on_game_over_layout_go_menu_click():
+	show()
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/start_menu.tscn")
+
+
+
+func _on_in_game_menu_button_pressed():
+	hide()
+	get_node("InGameMenu").visible = true
+	get_tree().paused = true
+	
+	
+func _on_in_game_menu_ig_retry_click():
+	show()
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+	
+	
+
+func _on_in_game_menu_ig_return_click():
+	show()
+	get_node("InGameMenu").visible = false
+	get_tree().paused = false
+	
+
+
+
+func _on_in_game_menu_ig_mainmenu_click():
+	show()
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/start_menu.tscn")
+
+
+func _on_game_over_layout_restart_click():
+	show()
+	get_tree().paused = false
+	get_tree().reload_current_scene()

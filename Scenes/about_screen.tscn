@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://lxp6t5dqggq2"]
+[gd_scene load_steps=5 format=3 uid="uid://lxp6t5dqggq2"]
 
 [ext_resource type="Script" path="res://Scripts/about_screen.gd" id="1_dlwp6"]
 [ext_resource type="Texture2D" uid="uid://cujtp302kb26p" path="res://Artworks/bg.png" id="1_lnd2x"]
@@ -7,10 +7,6 @@
 [sub_resource type="LabelSettings" id="LabelSettings_ofvwq"]
 font = ExtResource("3_piwyb")
 font_size = 80
-
-[sub_resource type="LabelSettings" id="LabelSettings_siedi"]
-font = ExtResource("3_piwyb")
-font_size = 20
 
 [node name="About_Screen" type="Control"]
 layout_mode = 3
@@ -40,20 +36,22 @@ grow_vertical = 2
 texture = ExtResource("1_lnd2x")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -89.0
-offset_top = -21.0
-offset_right = 89.0
-offset_bottom = 21.0
+offset_left = -406.0
+offset_top = -335.0
+offset_right = 406.0
+offset_bottom = 335.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Name_Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
@@ -62,22 +60,40 @@ label_settings = SubResource("LabelSettings_ofvwq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
-text = "Hello, folks!
-I am Palash Bauri, I am the developer of this game.
 
-This is the very first game I have developed.
+[node name="About_Text_Label" type="RichTextLabel" parent="VBoxContainer/ScrollContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("3_piwyb")
+theme_override_fonts/bold_font = ExtResource("3_piwyb")
+theme_override_fonts/italics_font = ExtResource("3_piwyb")
+theme_override_fonts/bold_italics_font = ExtResource("3_piwyb")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[b]Hello, folks![/b]
+
+[img=center,center]res://Artworks/palash_potrait.png[/img]
+
+I am [b]Palash Bauri[/b], I am the developer of this game. This is the very first game I have developed. The game is open source licenesed under GNU GPL v3, the source code of the game is avaible on [url=https://github.com/bauripalash/jumpvolly]github[/url]
+
+[u][b]How to Play[/b][/u]
+Your goal in this game is to hit the ball with the character as many times as possible, gaining points and preventing the ball from touching the ground, loosing health. You have total 10 health, with this score as much as possible and create high scores.
+
+[u][b]Controls[/b][/u]
+
+[*] Computer/Web: pressing the [u][i]Left Arrow key[/i][/u] and [u][i]A[/i][/u] will move the character to left and pressing the [u][i]Right Arrow key[/i][/u] and [u][i]D[/i][/u] will move the character to right. As soon as you release those keys, the character will jump.
+[*] Mobile: Tapping left side of the screen moves the character to the left; tapping the righting side moves the character to the right. Releasing them make the character jump.
 
 Have fun!
 
-Credits:
---------
-
-Most game assets are from Kenney's assets (www.kenney.nl).
-The font used is Générale Station, licensed under SIL OFL Version 1.1 
-(https://openfontlicense.org/)"
-label_settings = SubResource("LabelSettings_siedi")
+[u][b]Credits:[/b][/u]
+Most game assets are from Kenney’s assets ([url=https://www.kenney.nl]kenney.nl[/url]) such as the character, the background, the floor platform, the volleyball is from openclipart.org.
+The font used is Générale Station, licensed under [url=https://openfontlicense.org/open-font-license-official-text/]SIL Open Font License (OFL) version 1.1[/url]."
+fit_content = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -90,4 +106,5 @@ theme_override_font_sizes/font_size = 30
 text = "[Back]"
 flat = true
 
+[connection signal="meta_clicked" from="VBoxContainer/ScrollContainer/About_Text_Label" to="." method="_on_about_text_label_meta_clicked"]
 [connection signal="button_down" from="VBoxContainer/MarginContainer/Return_To_Start_Screen" to="." method="_on_return_to_start_screen_button_down"]
