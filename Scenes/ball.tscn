@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://mcnoqy45u1b2"]
 
 [ext_resource type="Script" path="res://Scripts/ball.gd" id="1_g4o4u"]
-[ext_resource type="Texture2D" uid="uid://dayqmlvwfud2j" path="res://Artworks/SoccerBall.png" id="2_wk083"]
+[ext_resource type="Texture2D" uid="uid://md43ex4mdihe" path="res://Artworks/vball.png" id="2_e2ql4"]
 [ext_resource type="AudioStream" uid="uid://h3srttqibs54" path="res://Artworks/Sounds/ball_ground.ogg" id="3_750st"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fvx44"]
@@ -23,8 +23,8 @@ script = ExtResource("1_g4o4u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 200
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_wk083")
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("2_e2ql4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 300
