@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfuicevmcynv8"]
+[gd_scene load_steps=11 format=3 uid="uid://bfuicevmcynv8"]
 
 [ext_resource type="Script" path="res://Scripts/start_menu.gd" id="1_gdwp3"]
 [ext_resource type="Texture2D" uid="uid://cujtp302kb26p" path="res://Artworks/bg.png" id="2_bkqxu"]
@@ -15,6 +15,66 @@ outline_color = Color(0.027451, 0.627451, 0.278431, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_m8v0v"]
 font = ExtResource("3_doetv")
 font_size = 34
+
+[sub_resource type="Animation" id="Animation_5sovr"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_2d3ut"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vlvu0"]
+_data = {
+"fade_in": SubResource("Animation_2d3ut"),
+"fade_out": SubResource("Animation_5sovr")
+}
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -122,6 +182,24 @@ theme_override_font_sizes/font_size = 22
 text = "[Website]
 "
 flat = true
+
+[node name="Transition" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vlvu0")
+}
+
+[node name="ColorRect" type="ColorRect" parent="Transition"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -551.0
+offset_top = -648.0
+offset_right = 487.0
+offset_bottom = 703.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [connection signal="button_down" from="VBoxContainer2/VBoxContainer/MarginContainer/HBoxContainer/Start_Button" to="." method="_on_start_button_button_down"]
 [connection signal="button_down" from="VBoxContainer2/VBoxContainer/MarginContainer/HBoxContainer/Exit_Button" to="." method="_on_exit_button_button_down"]

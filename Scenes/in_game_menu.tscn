@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c7hqrgrfuvsrk"]
 
-[ext_resource type="Script" path="res://Scenes/in_game_menu.gd" id="1_itr5p"]
+[ext_resource type="Script" path="res://Scripts/in_game_menu.gd" id="1_itr5p"]
 [ext_resource type="FontFile" uid="uid://c51wwnysc63o7" path="res://Artworks/Fonts/GeneraleStation-Regular.otf" id="1_v6qa8"]
 [ext_resource type="Texture2D" uid="uid://rml34saommt" path="res://Artworks/HUD/retry_menu_btn.png" id="2_7j16f"]
 [ext_resource type="StyleBox" uid="uid://dd6eto1v1ry53" path="res://Styles/in_game_menu_button_styles.tres" id="2_l6rw6"]

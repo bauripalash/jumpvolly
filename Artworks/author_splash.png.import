@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq3fu800llrx"
-path="res://.godot/imported/shadedDark12.png-974a5e122b5d891eaeb52edfb54b58cf.ctex"
+uid="uid://dnae6cili70yv"
+path="res://.godot/imported/author_splash.png-516f65b6cee112dc4a9191ceb2355581.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Artworks/HUD/shadedDark12.png"
-dest_files=["res://.godot/imported/shadedDark12.png-974a5e122b5d891eaeb52edfb54b58cf.ctex"]
+source_file="res://Artworks/author_splash.png"
+dest_files=["res://.godot/imported/author_splash.png-516f65b6cee112dc4a9191ceb2355581.ctex"]
 
 [params]
 

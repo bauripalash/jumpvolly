@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m1111cnjrcmd"
-path="res://.godot/imported/arrowLeft.png-e1dbd8b287705eda6badbbd3b8c24e72.ctex"
+uid="uid://do51bntyy3kuu"
+path="res://.godot/imported/logo_android.svg-81e6be5ed8e0aa890de2dc28724620c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Artworks/HUD/arrowLeft.png"
-dest_files=["res://.godot/imported/arrowLeft.png-e1dbd8b287705eda6badbbd3b8c24e72.ctex"]
+source_file="res://logo_android.svg"
+dest_files=["res://.godot/imported/logo_android.svg-81e6be5ed8e0aa890de2dc28724620c0.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

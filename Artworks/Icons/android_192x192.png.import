@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kxmin8c8a0jn"
-path="res://.godot/imported/replay.png-4b4fa4ef93f17ed35981be850eaca16c.ctex"
+uid="uid://bgn4clenayrkn"
+path="res://.godot/imported/android_192x192.png-ff5cd9e0a3a54173ed16c38fbbf47e92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Artworks/HUD/replay.png"
-dest_files=["res://.godot/imported/replay.png-4b4fa4ef93f17ed35981be850eaca16c.ctex"]
+source_file="res://Artworks/Icons/android_192x192.png"
+dest_files=["res://.godot/imported/android_192x192.png-ff5cd9e0a3a54173ed16c38fbbf47e92.ctex"]
 
 [params]
 

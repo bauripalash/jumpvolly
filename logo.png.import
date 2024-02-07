@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cje4f82p8aaug"
-path="res://.godot/imported/arrowRight.png-4de034c97f35e51defd005419f88b9f7.ctex"
+uid="uid://xkf22wfqqtd2"
+path="res://.godot/imported/logo.png-cca8726399059c8d4f806e28e356b14d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Artworks/HUD/arrowRight.png"
-dest_files=["res://.godot/imported/arrowRight.png-4de034c97f35e51defd005419f88b9f7.ctex"]
+source_file="res://logo.png"
+dest_files=["res://.godot/imported/logo.png-cca8726399059c8d4f806e28e356b14d.ctex"]
 
 [params]
 

@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dd5i5w6fov0ag"]
+[gd_scene load_steps=8 format=3 uid="uid://dd5i5w6fov0ag"]
 
-[ext_resource type="Script" path="res://Scenes/game_over_ui.gd" id="1_73t6g"]
-[ext_resource type="Texture2D" uid="uid://b0tut5fgquig" path="res://Artworks/HUD/game_over_bg.png" id="1_fsnvn"]
+[ext_resource type="Script" path="res://Scripts/game_over_ui.gd" id="1_73t6g"]
 [ext_resource type="Texture2D" uid="uid://dw0e5ectsxsoe" path="res://Artworks/HUD/restart.png" id="1_yjjqc"]
 [ext_resource type="FontFile" uid="uid://c51wwnysc63o7" path="res://Artworks/Fonts/GeneraleStation-Regular.otf" id="3_rd6sb"]
 [ext_resource type="Texture2D" uid="uid://cthgwrl7squcl" path="res://Artworks/HUD/menu.png" id="4_5plr4"]
@@ -36,12 +35,6 @@ offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.709804, 0.560784, 0.45098, 0.756863)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(541.5, 356.023)
-scale = Vector2(1.48958, 1.48343)
-texture = ExtResource("1_fsnvn")
 
 [node name="Game_Over_Container" type="VBoxContainer" parent="."]
 anchors_preset = 8

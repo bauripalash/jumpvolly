@@ -79,16 +79,6 @@ follow_viewport_enabled = true
 
 [node name="Game" type="Node" parent="."]
 
-[node name="Player" parent="Game" instance=ExtResource("3_41ri0")]
-z_index = 2
-position = Vector2(484, 471)
-
-[node name="TileMap" type="TileMap" parent="Game"]
-tile_set = SubResource("TileSet_etutn")
-format = 2
-layer_0/z_index = 1
-layer_0/tile_data = PackedInt32Array(2555906, 0, 0, 2555910, 0, 0, 2555914, 0, 0, 2555918, 0, 0, 2555922, 0, 0, 2555926, 0, 0, 2555930, 0, 0, 2555934, 0, 0, 2555938, 0, 0, 2555942, 0, 0, 2555946, 0, 0, 2555950, 0, 0, 2555954, 0, 0, 2555958, 0, 0, 2555962, 0, 0, 2555966, 0, 0, 2555970, 0, 0, 2555974, 0, 0, 2555978, 0, 0, 2555982, 0, 0, 2555986, 0, 0, 2621438, 0, 0, 2621434, 0, 0, 2621430, 0, 0, 2621426, 0, 0, 2621422, 0, 0, 2621418, 0, 0, 2818049, 196608, 0, 2818053, 196608, 0, 2818057, 196608, 0, 2818061, 196608, 0, 2818065, 196608, 0, 2818069, 196608, 0, 2818073, 196608, 0, 2818077, 196608, 0, 2818081, 196608, 0, 2818085, 196608, 0, 2818089, 196608, 0, 2818093, 196608, 0, 2818097, 196608, 0, 2818102, 196608, 0, 2818101, 196608, 0, 2818106, 196608, 0, 2818110, 196608, 0, 2818114, 196608, 0, 2883581, 196608, 0, 2818118, 196608, 0, 2818122, 196608, 0, 2883577, 196608, 0, 3145721, 196608, 3, 3145725, 196608, 3, 3080193, 196608, 3, 3080197, 196608, 3, 3080201, 196608, 3, 3080205, 196608, 3, 2883573, 196608, 3, 2883569, 196608, 3, 2883565, 196608, 3, 2883561, 196608, 3, 3080209, 196608, 3, 3145717, 196608, 3, 3145713, 196608, 3, 3145709, 196608, 3, 3145705, 196608, 3, 3080213, 196608, 3, 3080217, 196608, 3, 3080221, 196608, 3, 3080225, 196608, 3, 3080228, 196608, 3, 3080232, 196608, 3, 3080236, 196608, 3, 3080240, 196608, 3, 3080244, 196608, 3, 2818126, 196608, 3, 2818130, 196608, 0, 3080248, 196608, 3, 3080252, 196608, 3, 3080256, 196608, 3, 3080260, 196608, 3, 3080264, 196608, 3, 3080267, 196608, 3, 3080271, 196608, 3, 3080274, 196608, 3, 2883562, 196608, 3, 3145706, 196608, 3, 2555990, 0, 0, 2555994, 0, 0, 2555998, 0, 0, 2556002, 0, 0, 2556006, 0, 0, 2556010, 0, 0, 2818127, 196608, 0, 2818125, 196608, 0, 2818124, 196608, 0, 2818134, 196608, 0, 2818138, 196608, 0, 2818142, 196608, 0, 2818147, 196608, 0, 2818146, 196608, 0, 2818151, 196608, 0, 2818155, 196608, 0, 3080278, 196608, 3, 3080282, 196608, 3, 3080286, 196608, 3, 3080290, 196608, 3, 3080294, 196608, 3, 3080298, 196608, 3, 2818158, 196608, 3, 3080302, 196608, 3, 2556014, 0, 0)
-
 [node name="Background" type="Node" parent="Game"]
 
 [node name="Bg" type="Sprite2D" parent="Game/Background"]
@@ -100,15 +90,25 @@ texture = ExtResource("3_ytdvf")
 position = Vector2(1239, 453)
 texture = ExtResource("3_ytdvf")
 
+[node name="Player" parent="Game" instance=ExtResource("3_41ri0")]
+z_index = 2
+position = Vector2(484, 471)
+
+[node name="Ball" parent="Game" instance=ExtResource("6_g3naj")]
+position = Vector2(356, 85)
+
+[node name="TileMap" type="TileMap" parent="Game"]
+tile_set = SubResource("TileSet_etutn")
+format = 2
+layer_0/z_index = 1
+layer_0/tile_data = PackedInt32Array(2555906, 0, 0, 2555910, 0, 0, 2555914, 0, 0, 2555918, 0, 0, 2555922, 0, 0, 2555926, 0, 0, 2555930, 0, 0, 2555934, 0, 0, 2555938, 0, 0, 2555942, 0, 0, 2555946, 0, 0, 2555950, 0, 0, 2555954, 0, 0, 2555958, 0, 0, 2555962, 0, 0, 2555966, 0, 0, 2555970, 0, 0, 2555974, 0, 0, 2555978, 0, 0, 2555982, 0, 0, 2555986, 0, 0, 2621438, 0, 0, 2621434, 0, 0, 2621430, 0, 0, 2621426, 0, 0, 2621422, 0, 0, 2621418, 0, 0, 2818049, 196608, 0, 2818053, 196608, 0, 2818057, 196608, 0, 2818061, 196608, 0, 2818065, 196608, 0, 2818069, 196608, 0, 2818073, 196608, 0, 2818077, 196608, 0, 2818081, 196608, 0, 2818085, 196608, 0, 2818089, 196608, 0, 2818093, 196608, 0, 2818097, 196608, 0, 2818102, 196608, 0, 2818101, 196608, 0, 2818106, 196608, 0, 2818110, 196608, 0, 2818114, 196608, 0, 2883581, 196608, 0, 2818118, 196608, 0, 2818122, 196608, 0, 2883577, 196608, 0, 3145721, 196608, 3, 3145725, 196608, 3, 3080193, 196608, 3, 3080197, 196608, 3, 3080201, 196608, 3, 3080205, 196608, 3, 2883573, 196608, 3, 2883569, 196608, 3, 2883565, 196608, 3, 2883561, 196608, 3, 3080209, 196608, 3, 3145717, 196608, 3, 3145713, 196608, 3, 3145709, 196608, 3, 3145705, 196608, 3, 3080213, 196608, 3, 3080217, 196608, 3, 3080221, 196608, 3, 3080225, 196608, 3, 3080228, 196608, 3, 3080232, 196608, 3, 3080236, 196608, 3, 3080240, 196608, 3, 3080244, 196608, 3, 2818126, 196608, 3, 2818130, 196608, 0, 3080248, 196608, 3, 3080252, 196608, 3, 3080256, 196608, 3, 3080260, 196608, 3, 3080264, 196608, 3, 3080267, 196608, 3, 3080271, 196608, 3, 3080274, 196608, 3, 2883562, 196608, 3, 3145706, 196608, 3, 2555990, 0, 0, 2555994, 0, 0, 2555998, 0, 0, 2556002, 0, 0, 2556006, 0, 0, 2556010, 0, 0, 2818127, 196608, 0, 2818125, 196608, 0, 2818124, 196608, 0, 2818134, 196608, 0, 2818138, 196608, 0, 2818142, 196608, 0, 2818147, 196608, 0, 2818146, 196608, 0, 2818151, 196608, 0, 2818155, 196608, 0, 3080278, 196608, 3, 3080282, 196608, 3, 3080286, 196608, 3, 3080290, 196608, 3, 3080294, 196608, 3, 3080298, 196608, 3, 2818158, 196608, 3, 3080302, 196608, 3, 2556014, 0, 0)
+
 [node name="Soil" type="StaticBody2D" parent="Game"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Soil"]
 position = Vector2(704, 706.5)
 shape = SubResource("RectangleShape2D_dcjve")
 debug_color = Color(0.854902, 0.270588, 0.639216, 0.419608)
-
-[node name="Ball" parent="Game" instance=ExtResource("6_g3naj")]
-position = Vector2(356, 85)
 
 [node name="Boundary" type="Node" parent="Game"]
 
@@ -158,8 +158,9 @@ grow_horizontal = 2
 position = Vector2(680.5, -3)
 shape = SubResource("RectangleShape2D_s8m80")
 
-[node name="Touch_Controls" type="Control" parent="Game"]
-visible = false
+[node name="HUD" type="Node" parent="Game"]
+
+[node name="Touch_Controls" type="Control" parent="Game/HUD"]
 layout_mode = 3
 anchors_preset = 14
 anchor_top = 0.5
@@ -168,13 +169,13 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Touch_Control_Left" type="Control" parent="Game/Touch_Controls"]
+[node name="Touch_Control_Left" type="Control" parent="Game/HUD/Touch_Controls"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
 
-[node name="Left_Button" type="Button" parent="Game/Touch_Controls/Touch_Control_Left"]
+[node name="Left_Button" type="Button" parent="Game/HUD/Touch_Controls/Touch_Control_Left"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -190,7 +191,7 @@ grow_vertical = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_13seg")
 flat = true
 
-[node name="Touch_Control_Right" type="Control" parent="Game/Touch_Controls"]
+[node name="Touch_Control_Right" type="Control" parent="Game/HUD/Touch_Controls"]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -199,7 +200,7 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Right_Button" type="Button" parent="Game/Touch_Controls/Touch_Control_Right"]
+[node name="Right_Button" type="Button" parent="Game/HUD/Touch_Controls/Touch_Control_Right"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -215,19 +216,17 @@ grow_vertical = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hjhkh")
 flat = true
 
-[node name="Menu_Control" type="Control" parent="Game"]
+[node name="Menu_Control" type="Control" parent="Game/HUD"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 61.0
 offset_bottom = 61.0
 
-[node name="InGameMenuButton" type="Button" parent="Game/Menu_Control"]
+[node name="InGameMenuButton" type="Button" parent="Game/HUD/Menu_Control"]
 layout_mode = 0
 scale = Vector2(0.6, 0.6)
 theme_type_variation = &"FlatButton"
 icon = ExtResource("3_jm607")
-
-[node name="HUD" type="Node" parent="Game"]
 
 [node name="Score_Control" type="Control" parent="Game/HUD"]
 layout_mode = 3
@@ -304,8 +303,8 @@ texture = ExtResource("13_mjpwm")
 [connection signal="ig_return_click" from="InGameMenu" to="." method="_on_in_game_menu_ig_return_click"]
 [connection signal="ball_hit" from="Game/Player" to="." method="_on_player_ball_hit"]
 [connection signal="hit_ground" from="Game/Ball" to="." method="_on_ball_hit_ground"]
-[connection signal="button_down" from="Game/Touch_Controls/Touch_Control_Left/Left_Button" to="." method="_on_left_button_button_down"]
-[connection signal="button_up" from="Game/Touch_Controls/Touch_Control_Left/Left_Button" to="." method="_on_left_button_button_up"]
-[connection signal="button_down" from="Game/Touch_Controls/Touch_Control_Right/Right_Button" to="." method="_on_right_button_button_down"]
-[connection signal="button_up" from="Game/Touch_Controls/Touch_Control_Right/Right_Button" to="." method="_on_right_button_button_up"]
-[connection signal="pressed" from="Game/Menu_Control/InGameMenuButton" to="." method="_on_in_game_menu_button_pressed"]
+[connection signal="button_down" from="Game/HUD/Touch_Controls/Touch_Control_Left/Left_Button" to="." method="_on_left_button_button_down"]
+[connection signal="button_up" from="Game/HUD/Touch_Controls/Touch_Control_Left/Left_Button" to="." method="_on_left_button_button_up"]
+[connection signal="button_down" from="Game/HUD/Touch_Controls/Touch_Control_Right/Right_Button" to="." method="_on_right_button_button_down"]
+[connection signal="button_up" from="Game/HUD/Touch_Controls/Touch_Control_Right/Right_Button" to="." method="_on_right_button_button_up"]
+[connection signal="pressed" from="Game/HUD/Menu_Control/InGameMenuButton" to="." method="_on_in_game_menu_button_pressed"]
