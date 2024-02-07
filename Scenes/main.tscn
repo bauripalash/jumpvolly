@@ -45,20 +45,18 @@ sources/0 = SubResource("TileSetAtlasSource_34rca")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcjve"]
 size = Vector2(2664, 213)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vquh"]
-size = Vector2(1070, 1000)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehcg5"]
-size = Vector2(1070, 1000)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fbmbx"]
-size = Vector2(59, 852)
+size = Vector2(25, 1030)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6144o"]
-size = Vector2(54, 845)
+size = Vector2(25, 1032)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8m80"]
-size = Vector2(2087, 25)
+size = Vector2(2395, 14)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_13seg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hjhkh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4wluw"]
 font = ExtResource("10_chf4s")
@@ -81,19 +79,6 @@ follow_viewport_enabled = true
 
 [node name="Game" type="Node" parent="."]
 
-[node name="Menu_Control" type="Control" parent="Game"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_group_ = true
-
-[node name="InGameMenuButton" type="TextureButton" parent="Game/Menu_Control"]
-layout_mode = 0
-scale = Vector2(0.6, 0.6)
-theme_type_variation = &"FlatButton"
-texture_normal = ExtResource("3_jm607")
-
 [node name="Player" parent="Game" instance=ExtResource("3_41ri0")]
 z_index = 2
 position = Vector2(484, 471)
@@ -112,7 +97,7 @@ position = Vector2(234, 451)
 texture = ExtResource("3_ytdvf")
 
 [node name="Bg2" type="Sprite2D" parent="Game/Background"]
-position = Vector2(1239, 454)
+position = Vector2(1239, 453)
 texture = ExtResource("3_ytdvf")
 
 [node name="Soil" type="StaticBody2D" parent="Game"]
@@ -121,44 +106,6 @@ texture = ExtResource("3_ytdvf")
 position = Vector2(704, 706.5)
 shape = SubResource("RectangleShape2D_dcjve")
 debug_color = Color(0.854902, 0.270588, 0.639216, 0.419608)
-
-[node name="Touch_Controls" type="Control" parent="Game"]
-layout_mode = 3
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Control_Touch_Left" type="Control" parent="Game/Touch_Controls"]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-grow_vertical = 2
-
-[node name="Touch_Left" type="TouchScreenButton" parent="Game/Touch_Controls/Control_Touch_Left"]
-z_index = 510
-shape = SubResource("RectangleShape2D_7vquh")
-shape_visible = false
-action = "move_left"
-visibility_mode = 1
-
-[node name="Control_Touch_Right" type="Control" parent="Game/Touch_Controls"]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="Touch_Right" type="TouchScreenButton" parent="Game/Touch_Controls/Control_Touch_Right"]
-z_index = 510
-shape = SubResource("RectangleShape2D_ehcg5")
-shape_visible = false
-action = "move_right"
-visibility_mode = 1
 
 [node name="Ball" parent="Game" instance=ExtResource("6_g3naj")]
 position = Vector2(356, 85)
@@ -176,7 +123,7 @@ grow_vertical = 2
 [node name="Left_Boundary" type="StaticBody2D" parent="Game/Boundary/Left_Boundary_Control"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Boundary/Left_Boundary_Control/Left_Boundary"]
-position = Vector2(-16.5, 416)
+position = Vector2(0.5, 327)
 shape = SubResource("RectangleShape2D_fbmbx")
 
 [node name="Right_Boundary_Control" type="Control" parent="Game/Boundary"]
@@ -194,7 +141,7 @@ grow_vertical = 2
 [node name="Right_Boundary" type="StaticBody2D" parent="Game/Boundary/Right_Boundary_Control"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Boundary/Right_Boundary_Control/Right_Boundary"]
-position = Vector2(1092, 412.5)
+position = Vector2(1077.5, 319)
 shape = SubResource("RectangleShape2D_6144o")
 
 [node name="Top_Boundary_Control" type="Control" parent="Game/Boundary"]
@@ -206,12 +153,79 @@ offset_bottom = 40.0
 grow_horizontal = 2
 
 [node name="Top_Boundary" type="StaticBody2D" parent="Game/Boundary/Top_Boundary_Control"]
-z_index = 700
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Boundary/Top_Boundary_Control/Top_Boundary"]
-z_index = 800
-position = Vector2(834.5, 2.5)
+position = Vector2(680.5, -3)
 shape = SubResource("RectangleShape2D_s8m80")
+
+[node name="Touch_Controls" type="Control" parent="Game"]
+visible = false
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Touch_Control_Left" type="Control" parent="Game/Touch_Controls"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="Left_Button" type="Button" parent="Game/Touch_Controls/Touch_Control_Left"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -500.0
+offset_right = 500.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_13seg")
+flat = true
+
+[node name="Touch_Control_Right" type="Control" parent="Game/Touch_Controls"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Right_Button" type="Button" parent="Game/Touch_Controls/Touch_Control_Right"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -500.0
+offset_right = 500.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hjhkh")
+flat = true
+
+[node name="Menu_Control" type="Control" parent="Game"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 61.0
+offset_bottom = 61.0
+
+[node name="InGameMenuButton" type="Button" parent="Game/Menu_Control"]
+layout_mode = 0
+scale = Vector2(0.6, 0.6)
+theme_type_variation = &"FlatButton"
+icon = ExtResource("3_jm607")
 
 [node name="HUD" type="Node" parent="Game"]
 
@@ -288,6 +302,10 @@ texture = ExtResource("13_mjpwm")
 [connection signal="ig_mainmenu_click" from="InGameMenu" to="." method="_on_in_game_menu_ig_mainmenu_click"]
 [connection signal="ig_retry_click" from="InGameMenu" to="." method="_on_in_game_menu_ig_retry_click"]
 [connection signal="ig_return_click" from="InGameMenu" to="." method="_on_in_game_menu_ig_return_click"]
-[connection signal="pressed" from="Game/Menu_Control/InGameMenuButton" to="." method="_on_in_game_menu_button_pressed"]
 [connection signal="ball_hit" from="Game/Player" to="." method="_on_player_ball_hit"]
 [connection signal="hit_ground" from="Game/Ball" to="." method="_on_ball_hit_ground"]
+[connection signal="button_down" from="Game/Touch_Controls/Touch_Control_Left/Left_Button" to="." method="_on_left_button_button_down"]
+[connection signal="button_up" from="Game/Touch_Controls/Touch_Control_Left/Left_Button" to="." method="_on_left_button_button_up"]
+[connection signal="button_down" from="Game/Touch_Controls/Touch_Control_Right/Right_Button" to="." method="_on_right_button_button_down"]
+[connection signal="button_up" from="Game/Touch_Controls/Touch_Control_Right/Right_Button" to="." method="_on_right_button_button_up"]
+[connection signal="pressed" from="Game/Menu_Control/InGameMenuButton" to="." method="_on_in_game_menu_button_pressed"]

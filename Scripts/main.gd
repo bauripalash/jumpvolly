@@ -8,17 +8,19 @@ var score = 0
 var h_full = preload("res://Artworks/HUD/heart_full.png")
 var h_half = preload("res://Artworks/HUD/heart_half.png")
 var h_empty = preload("res://Artworks/HUD/heart_empty.png")
-var back_menu_icon = preload("res://Artworks/HUD/back_menu_btn.png")
-var retry_menu_icon = preload("res://Artworks/HUD/retry_menu_btn.png")
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	$GameOver_Layout.hide()
-	#load_high_score()
 	update_health(health)
-	
-
-	
+	var touch_controls : Control = get_node("Game/Touch_Controls")
+	var platform = OS.get_name()
+	print(platform)
+	if (platform.begins_with("Android") 
+	or platform.begins_with("iOS") 
+	or platform.begins_with("HTML5")
+	or platform.begins_with("Web")):
+		touch_controls.visible = true
+			
 
 func update_health(value):
 	var hcon = get_node("Game/HUD/Health_Control/MarginContainer/Health_Container")
@@ -31,26 +33,12 @@ func update_health(value):
 			hcon.get_child(i).texture = h_empty
 	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_action_just_pressed("retry_click"):
-		get_tree().reload_current_scene()
-
-
 func _on_player_ball_hit():
 	score += 1
 	$Game/HUD/Score_Control/Score_Label.set_text("%04d" % score)
 	print("Score -> %03d" %score)
 
 func handle_game_over():
-	#$Game/Player/CollisionShape2D.disabled = true 
-	#$Game/Ball/CollisionShape2D.disabled = true
-	#get_node("Game").process_mode = Node.PROCESS_MODE_DISABLED
-	#get_node("Game/HUD/Score_Control").visible = false
-	#get_node("Game/HUD/Health_Control").visible = false
-	#get_node("Game/Retry_Button_Control").visible = false
-	#get_node("Game").set_deferred("process_mode" , Node.PROCESS_MODE_DISABLED)
-	
 	if score > Globals.high_score:
 		Globals.save_high_score(score)
 		
@@ -100,8 +88,6 @@ func _on_in_game_menu_ig_return_click():
 	get_tree().paused = false
 	
 
-
-
 func _on_in_game_menu_ig_mainmenu_click():
 	show()
 	get_tree().paused = false
@@ -112,3 +98,48 @@ func _on_game_over_layout_restart_click():
 	show()
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+
+
+func _on_leftbutton_button_down():
+	var cancel_event = InputEventAction.new()
+	cancel_event.action = "move_left"
+	cancel_event.pressed = true
+	Input.parse_input_event(cancel_event)
+
+
+func _on_leftbutton_button_up():
+	var cancel_event = InputEventAction.new()
+	cancel_event.action = "move_left"
+	cancel_event.pressed = false
+	Input.parse_input_event(cancel_event)
+
+
+
+func _on_left_button_button_down():
+	var left_touch_event = InputEventAction.new()
+	left_touch_event.action = "move_left"
+	left_touch_event.pressed = true
+	Input.parse_input_event(left_touch_event)
+
+
+func _on_left_button_button_up():
+	var left_touch_event = InputEventAction.new()
+	left_touch_event.action = "move_left"
+	left_touch_event.pressed = false
+	Input.parse_input_event(left_touch_event)
+
+
+
+func _on_right_button_button_down():
+	var right_touch_event = InputEventAction.new()
+	right_touch_event.action = "move_right"
+	right_touch_event.pressed = true
+	Input.parse_input_event(right_touch_event)
+
+
+func _on_right_button_button_up():
+	var right_touch_event = InputEventAction.new()
+	right_touch_event.action = "move_right"
+	right_touch_event.pressed = false
+	Input.parse_input_event(right_touch_event)
