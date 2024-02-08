@@ -9,10 +9,15 @@ var h_full : CompressedTexture2D = preload("res://Artworks/HUD/heart_full.png")
 var h_half : CompressedTexture2D = preload("res://Artworks/HUD/heart_half.png")
 var h_empty : CompressedTexture2D = preload("res://Artworks/HUD/heart_empty.png")
 
+@onready var debug_controls : Control = $Game/HUD/Debug_Controls
+@onready var touch_controls : Control = $Game/Touch_Controls
 
 func _ready() -> void:
+	if Globals.DEBUG:
+		debug_controls.visible = true
+	
 	update_health(health)
-	var touch_controls : Control = $Game/Touch_Controls
+	
 	var platform : String = OS.get_name()
 	#print(platform)
 	if (platform.begins_with("Android") 
@@ -20,7 +25,11 @@ func _ready() -> void:
 	or platform.begins_with("HTML5")
 	or platform.begins_with("Web")):
 		touch_controls.visible = true
-			
+	
+func _process(delta: float) -> void:
+	if Globals.DEBUG:
+		$Game/HUD/Debug_Controls/MCont/VCont/FPS_Label.set_text("FPS : " + 
+									str(Engine.get_frames_per_second()))
 
 func update_health(value : int) -> void:
 	var hcon : HBoxContainer = $Game/HUD/Health_Control/MarginContainer/Health_Container

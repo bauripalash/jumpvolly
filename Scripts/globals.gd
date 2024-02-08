@@ -1,5 +1,6 @@
 extends Node
 
+@export var DEBUG : bool = false
 var sound_enabled  : bool = true
 var high_score : int = 0
 

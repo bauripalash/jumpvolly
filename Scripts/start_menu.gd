@@ -5,8 +5,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if not t_color.visible:
-		t_color.visible = true
+	t_color.visible = true
 	transition.play("fade_in")
 	var sound_button : CheckBox = $VBoxContainer2/MarginContainer/HBoxContainer/Sound_Button
 	sound_button.button_pressed = Globals.sound_enabled

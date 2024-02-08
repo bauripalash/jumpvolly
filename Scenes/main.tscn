@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dkwwhk8anason"]
+[gd_scene load_steps=22 format=3 uid="uid://dkwwhk8anason"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_8wj7i"]
 [ext_resource type="Texture2D" uid="uid://dnvioo8x6ucif" path="res://Artworks/tiles.svg" id="2_5p0t0"]
@@ -63,6 +63,10 @@ font = ExtResource("10_chf4s")
 font_size = 30
 font_color = Color(0, 0, 0, 1)
 shadow_size = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_clgs7"]
+font = ExtResource("10_chf4s")
+font_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_8wj7i")
@@ -295,6 +299,33 @@ texture = ExtResource("13_mjpwm")
 [node name="5" type="TextureRect" parent="Game/HUD/Health_Control/MarginContainer/Health_Container"]
 layout_mode = 2
 texture = ExtResource("13_mjpwm")
+
+[node name="Debug_Controls" type="Control" parent="Game/HUD"]
+visible = false
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+
+[node name="MCont" type="MarginContainer" parent="Game/HUD/Debug_Controls"]
+layout_mode = 1
+offset_right = 91.0
+offset_bottom = 220.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 0
+
+[node name="VCont" type="VBoxContainer" parent="Game/HUD/Debug_Controls/MCont"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="FPS_Label" type="Label" parent="Game/HUD/Debug_Controls/MCont/VCont"]
+layout_mode = 2
+text = "FPS : "
+label_settings = SubResource("LabelSettings_clgs7")
+
+[node name="Platform" type="Label" parent="Game/HUD/Debug_Controls/MCont/VCont"]
+layout_mode = 2
 
 [connection signal="go_menu_click" from="GameOver_Layout" to="." method="_on_game_over_layout_go_menu_click"]
 [connection signal="restart_click" from="GameOver_Layout" to="." method="_on_game_over_layout_restart_click"]
