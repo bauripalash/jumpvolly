@@ -21,4 +21,4 @@ Your goal in this game is to hit the ball with the character as many times as po
 Have fun!
 
 ### Credits
-Most game assets are from Kenney’s assets ([kenney.nl](https://www.kenney.nl)) such as the character, the background, the floor platform, the volleyball is from openclipart.org. The font used is Générale Station, licensed under SIL Open Font License (OFL) version 1.1. See <./Artworks/LICENSE.md> for more information
+Most game assets are from Kenney’s assets ([kenney.nl](https://www.kenney.nl)) such as the character, the background, the floor platform, the volleyball is from openclipart.org. The font used is Générale Station, licensed under SIL Open Font License (OFL) version 1.1. See [Artworks/LICENSE.md](https://github.com/bauripalash/jumpvolly/blob/main/Artworks/LICENSE.md) for more information
