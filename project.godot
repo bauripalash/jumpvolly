@@ -15,13 +15,16 @@ run/main_scene="res://Scenes/author_splash.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/image="res://Artworks/author_bg.png"
-boot_splash/fullsize=false
-boot_splash/use_filter=false
 config/icon="res://logo.svg"
 
 [autoload]
 
 Globals="*res://Scripts/globals.gd"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+gdscript/warnings/inferred_declaration=1
 
 [display]
 
