@@ -11,6 +11,8 @@ config_version=5
 [application]
 
 config/name="Jump Volly"
+config/description="Jump Volly hyper casual game by Palash Bauri"
+config/version="0.1.1"
 run/main_scene="res://Scenes/author_splash.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/bg_color=Color(1, 1, 1, 1)

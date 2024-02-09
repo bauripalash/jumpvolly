@@ -3,7 +3,7 @@ extends Node2D
 
 
 var score : int = 0
-@export var health : int = 10	
+@export var health : int = 10
 
 var h_full : CompressedTexture2D = preload("res://Artworks/HUD/heart_full.png")
 var h_half : CompressedTexture2D = preload("res://Artworks/HUD/heart_half.png")
