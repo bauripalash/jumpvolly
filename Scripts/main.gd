@@ -68,7 +68,7 @@ func handle_game_over() -> void:
 func _on_ball_hit_ground() -> void:
 	if health != 0:
 		health -= 1
-		print("Health -> " , health)
+		#print("Health -> " , health)
 		update_health(health)
 	else:
 		handle_game_over()
