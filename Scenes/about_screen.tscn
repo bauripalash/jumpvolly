@@ -69,6 +69,7 @@ clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
+mouse_force_pass_scroll_events = false
 theme_override_fonts/normal_font = ExtResource("3_piwyb")
 theme_override_fonts/bold_font = ExtResource("3_piwyb")
 theme_override_fonts/italics_font = ExtResource("3_piwyb")
@@ -79,7 +80,7 @@ text = "[b]Hello, folks![/b]
 
 [img=center,center]res://Artworks/palash_potrait.png[/img]
 
-I am [b]Palash Bauri[/b], I am the developer of this game. This is the very first game I have developed. The game is open source lice need under GNU GPL v3, the source code of the game is available on [url=https://github.com/bauripalash/jumpvolly]github[/url]
+I am [b]Palash Bauri[/b], I am the developer of this game. This is the very first game I have developed. The game is open source lice need under GNU GPL v3, the source code of the game is available on github at https://github.com/bauripalash/jumpvolly
 
 [u][b]How to Play[/b][/u]
 Your goal in this game is to hit the ball with the character as many times as possible, gaining points and preventing the ball from touching the ground, loosing health. You have total 10 health, with this score as much as possible and create high scores.

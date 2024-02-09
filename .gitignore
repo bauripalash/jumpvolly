@@ -16,7 +16,12 @@ mono_crash.*.json
 
 
 *.apk
+*.aab
 *.idsig
 *.x86_64
 *.pck
 Jump Volly.sh
+
+#Android build ignore
+android/build/*
+!android/build/AndroidManifest.xml
